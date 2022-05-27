@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Lista de afiliados</title>
+     </head>
+  <body>
+ <h1><font size ="20", color ="#800080"> Lista de afiliados</font></h1>
+    <table border="1" cellpadding="1" cellspacing="1">
+        <head>
+            <tr  bgcolor="#800080" >
+                <th><font size ="5", color ="#ffffff">NSS</font></th>
+                <th><font size ="5", color ="#ffffff">Nombre</font></th>
+                <th><font size ="5", color ="#ffffff">Edad</font></th>
+                <th><font size ="5", color ="#ffffff">Tipo de Sangre</font></th>
+            </tr>
+        </head>
+        <body>
+            <% for(let i=0; i < persons.length; i++) { %>
+                <tr	bgcolor="#FF00FF">
+                    <td><%= persons[i].nss %></td>
+                    <td><%= persons[i].nombre %></td>
+                    <td><%= persons[i].edad %></td>
+                    <td><%= persons[i].tipoSangre %></td>
+                    <td><a href="<%= `deletePerson/${persons[i]._id}` %>">Delete</a> </td>
+                    <td><a href="<%= `findById/${persons[i]._id}` %>">Update</a> </td>
+                    
+                </tr>
+                <% } %>
+        </body>
+    </table>
+     <div>
+      <br><br><br>
+        <a href="./main"><font size ="20", color ="#800080"> Back </font></a>
+    </div>
+  </body>
+  </html>

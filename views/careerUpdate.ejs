@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>
+    <font size="20" , color="#800080"> ACTUALIZAR DATOS DE CARRERA </font>
+  </h1>
+
+  <form action="/updateCareer" method="post">
+    <label for="idC">Id de Carrera:</label>
+    <input type="text" id="idC" name="idC" value="<%= `${career.idC}` %>"><br><br>
+    <label for="name">NOMBRE:</label>
+    <input type="text" id="name" name="name" value="<%= `${career.name}` %>"><br><br>
+    <label for="description">Descripción:</label>
+    <input type="text" id="description" name="description" value="<%= `${career.description}` %>"><br><br>
+    <label for="objId">ID:</label>
+    <input type="text" id="objId" name="objId" value="<%= `${career._id}` %>"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <div>
+    <br>
+    <br>
+    <br>
+    <a href="./main">
+      <font size="20" , color="#800080"> Back </font>
+    </a>
+  </div>
+</body>
+
+</html>

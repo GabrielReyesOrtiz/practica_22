@@ -1,12 +1,12 @@
 //Aqui estamos inyectando la dependencia en mongoose
 const mongoose = require('mongoose');
 //Instanciamos  Schema de Mongoose que coincida con la coleccion de MongoDB Atlas
-let PersonSchema = new mongoose.Schema({
-  nombre: String,
-  edad:Number,
-  tipoSangre: String,
-  nss: String
+let TeacherSchema = new mongoose.Schema({
+  idT:Number,
+  name: String,
+  email: String,
+  id_career: Number
 
 });
 //Exponemos instancia de modelos mongoose 
-module.exports = mongoose.model('test', PersonSchema);
+module.exports = mongoose.model('teacher', TeacherSchema);

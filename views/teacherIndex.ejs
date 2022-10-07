@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Maestros</title>
+</head>
+
+<body>
+  <h1>
+    <font size="20" , color="#C0C0C0"> Lista de Maestros</font>
+  </h1>
+  <table border="1" cellpadding="1" cellspacing="1">
+
+    <head>
+      <tr bgcolor="#800080">
+        <th>
+          <font size="5" , color="#ffffff">Id de Maestros</font>
+        </th>
+        <th>
+          <font size="5" , color="#ffffff">Nombre</font>
+        </th>
+        <th>
+          <font size="5" , color="#ffffff">Correo electrónico</font>
+        </th>
+        <th>
+          <font size="5" , color="#ffffff">Id de Carrera</font>
+        </th>
+      </tr>
+    </head>
+
+    <body>
+      <% for(let i=0; i < teachers.length; i++) { %>
+      <tr bgcolor="#C0C0C0">
+        <td><%= teachers[i].idT %></td>
+        <td><%= teachers[i].name %></td>
+        <td><%= teachers[i].email %></td>
+        <td><%= teachers[i].id_career %></td>
+        <td><a href="<%= `deleteTeacher/${teachers[i]._id}` %>">Delete</a> </td>
+        <td><a href="<%= `findByIdT/${teachers[i]._id}` %>">Update</a> </td>
+
+      </tr>
+      <% } %>
+    </body>
+  </table>
+  <div>
+    <br><br><br>
+    <a href="./main">
+      <font size="20" , color="#800080"> Back </font>
+    </a>
+  </div>
+</body>
+
+</html>

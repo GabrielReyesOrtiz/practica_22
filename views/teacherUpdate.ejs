@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>
+    <font size="20" , color="#800080"> ACTUALIZAR DATOS DE MAESTRO </font>
+  </h1>
+
+  <form action="/updateTeacher" method="post">
+    <label for="idT">Id de Maestro:</label>
+    <input type="text" id="idT" name="idT" value="<%= `${teacher.idT}` %>"><br><br>
+    <label for="name">NOMBRE:</label>
+    <input type="text" id="name" name="name" value="<%= `${teacher.name}` %>"><br><br>
+    <label for="description">Email:</label>
+    <input type="text" id="email" name="email" value="<%= `${teacher.email}` %>"><br><br>
+    <label for="id_career">Id de Carrera:</label>
+    <input type="text" id="id_career" name="id_career" value="<%= `${teacher.id_career}` %>"><br><br>
+    <label for="objId">ID:</label>
+    <input type="text" id="objId" name="objId" value="<%= `${teacher._id}` %>"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <div>
+    <br>
+    <br>
+    <br>
+    <a href="./main">
+      <font size="20" , color="#800080"> Back </font>
+    </a>
+  </div>
+</body>
+
+</html>

@@ -11,23 +11,23 @@
 
 <body>
   <h1>
-    <font size="20" , color="#C0C0C0"> Lista de Maestros</font>
+    <font size="20" , color="#C0C0C0"> Lista de Asistencia</font>
   </h1>
   <table border="1" cellpadding="1" cellspacing="1">
 
     <head>
       <tr bgcolor="#800080">
         <th>
-          <font size="5" , color="#ffffff">Id de Maestros</font>
+          <font size="5" , color="#ffffff">No. Cuenta</font>
         </th>
         <th>
           <font size="5" , color="#ffffff">Nombre</font>
         </th>
         <th>
-          <font size="5" , color="#ffffff">Correo electrónico</font>
+          <font size="5" , color="#ffffff">Grado y Grupo</font>
         </th>
         <th>
-          <font size="5" , color="#ffffff">Id de Carrera</font>
+          <font size="5" , color="#ffffff">Asistencia</font>
         </th>
       </tr>
     </head>
@@ -36,9 +36,9 @@
       <% for(let i=0; i < teachers.length; i++) { %>
       <tr bgcolor="#C0C0C0">
         <td><%= teachers[i].idT %></td>
-        <td><%= teachers[i].name %></td>
+        <td><%= teachers[i].name %> <span><%= teachers[i].id_career %></span></td>
         <td><%= teachers[i].email %></td>
-        <td><%= teachers[i].id_career %></td>
+        <td><%= teachers[i].asistencia %></td>
         <td><a href="<%= `deleteTeacher/${teachers[i]._id}` %>">Delete</a> </td>
         <td><a href="<%= `findByIdT/${teachers[i]._id}` %>">Update</a> </td>
 

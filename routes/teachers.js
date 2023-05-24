@@ -6,11 +6,19 @@ const mongoose = require('mongoose');
 let Teacher = require('../models/teacher');
 //Iteramos persons por personsIndex para que le de formato de tabla.
 router.get('/teachers', function(req, res, next){
-  Teacher.find(function (err, teachers) {
-    if (err) return next(err);
-    res.render('teacherIndex',{teachers});
+  if (req.session.user) {
+    // El usuario ha iniciado sesión, puedes acceder a los datos de sesión
+    const user = req.session.user;
+    Teacher.find(function (err, teachers) {
+      if (err) return next(err);
+      res.render('teacherIndex',{teachers, user});
+    });
+  } else {
+    // El usuario no ha iniciado sesión, redirige a la página de inicio de sesión
+    res.redirect('/');
+  }
 
-  });
+  
 });
 //Delete Person basicamente lo que haremos es borrar a una persona de nuestra base de datos
 //con el ID que tiene cada documento en la coleccion podremso borrarlo
@@ -42,15 +50,41 @@ router.post('/updateTeacher', function(req, res, next){
   });
 
 
-
+  router.get('/searchTeacher', function(req, res, next) {
+    if (req.session.user) {
+      // El usuario ha iniciado sesión, puedes acceder a los datos de sesión
+      const searchTerm = req.query.search; // Obtener el término de búsqueda de la consulta
+  
+    // Construir la consulta de búsqueda
+    const query = searchTerm ? { name: { $regex: searchTerm, $options: 'i' } } : {};
+  
+    // Realizar la búsqueda en la base de datos
+    Teacher.find(query, function(err, teachers) {
+      if (err) return next(err);
+      res.render('teacherIndex', { teachers, user: req.session.user });
+    });
+    } else {
+      // El usuario no ha iniciado sesión, redirige a la página de inicio de sesión
+      res.redirect('/');
+    }
+    
+  });
 
 //Agregamos ruta por GET para renderizar la vista 
-router.get('/main', function (req, res){
+/*router.get('/main', function (req, res){
   res.render('main');
-});
+});*/
 //Agregamos ruta por GET para renderizar la vista 
 router.get('/teacher', function (req, res){
-  res.render('teacher');
+  if (req.session.user) {
+    // El usuario ha iniciado sesión, puedes acceder a los datos de sesión
+    const user = req.session.user;
+    res.render('teacher');
+  } else {
+    // El usuario no ha iniciado sesión, redirige a la página de inicio de sesión
+    res.redirect('/');
+  }
+
 });
 //Agregamos nueva ruta por POST para poder agregar un docuento nuevo a nuetsra coleccion
 router.post('/addTeacher', function(req, res){

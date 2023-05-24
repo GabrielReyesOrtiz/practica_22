@@ -5,8 +5,6 @@ let CareerSchema = new mongoose.Schema({
   idC:Number,
   name: String,
   description: String
-  
-
 });
 //Exponemos instancia de modelos mongoose 
 module.exports = mongoose.model('career', CareerSchema);

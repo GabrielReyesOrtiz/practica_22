@@ -36,8 +36,14 @@
          </ul>
 
          <form class="form-inline">
-            <button class="btn btn-outline-success my-2 my-sm-0 bg-white" type="submit"> Get Registered</button> &nbsp;
-            <button class="btn btn-outline-success my-2 my-sm-0 bg-white" type="submit">Login</button>
+            <% if (user) { %>
+               <a class="btn btn-outline-success my-2 my-sm-0 bg-white" href="./logout">Log out</a>
+            <% } else { %>
+               <a class="btn btn-outline-success my-2 my-sm-0 bg-white" href="./register">Get Registered</a>
+               <a class="btn btn-outline-success my-2 my-sm-0 bg-white" href="./login">Login</a>
+            <% } %>   
+            
+
          </form>
       </form>
    </nav>
@@ -45,58 +51,75 @@
 
 <body>
 
-   <h1 class="text-center">
-      <font class="text-secondary" size="6" , color="#800080">Registration system</font>
-   </h1><br>
-   <br>
-   <br>
+   <% if (user) { %>
 
-   <div class="row pb-2">
-      <div class="card col-12 col-sm-6 col-md-4 bg-light" style="width: 18rem;">
-         <h5 class="card-title text-danger text-center">
-            TEACHERS</h5>
-         <img class="card-img-top rounded" src="../img/maestro.jpeg" height="150" alt="Card image cap">
-         <div class="card-body">
-            <h5 class="card-title text-danger "> <a href="./teacher">
-                  <font size="3"> <img class="" src="../img/mas.png" height="15"> Add
-                     Teachers</font>
-               </a></h5>
-            <h5 class="card-title text-danger"> <a href="./teachers">
-                  <font size="3"> <img class="" src="../img/list.png" height="15"> List of Teachers</font>
-               </a></h5>
+      <h1 class="text-center">
+         <font class="text-secondary" size="6" , color="#800080">Registration system</font>
+      </h1><br>
+      <br>
+      <br>
+   
+      <div class="row pb-2">
+         <div class="card col-12 col-sm-6 col-md-4 bg-light" style="width: 18rem;">
+            <h5 class="card-title text-danger text-center">
+               TEACHERS</h5>
+            <img class="card-img-top rounded" src="../img/maestro.jpeg" height="150" alt="Card image cap">
+            <div class="card-body">
+               <% if (user && user.userType === 'Administrador') { %>
+               <h5 class="card-title text-danger "> <a href="./teacher">
+                     <font size="3"> <img class="" src="../img/mas.png" height="15"> Add
+                        Teachers</font>
+                  </a></h5>
+               <% } %>
+               <h5 class="card-title text-danger"> <a href="./teachers">
+                     <font size="3"> <img class="" src="../img/list.png" height="15"> List of Teachers</font>
+                  </a></h5>
+            </div>
+         </div>
+   
+         <div class="card col-12 col-sm-6 col-md-4 bg-light" style="width: 18rem;">
+            <h5 class="card-title text-danger text-center">CAREER</h5>
+            <img class="card-img-top rounded" src="../img/carrera.jpg " height="150" alt="Card image cap">
+            <div class="card-body">
+               <% if (user && user.userType === 'Administrador') { %>
+               <h5 class="card-title text-danger"><a href="./career">
+                     <font size="3"> <img class="" src="../img/mas.png" height="15"> Add career</font>
+                  </a></h5>
+               <% } %>
+               <h3 class="card-text"> <a href="./careers">
+                     <font size="3"> <img class="" src="../img/list.png" height="15"> List of careers</font>
+                  </a></h3>
+            </div>
+         </div>
+   
+         <div class="card col-12 col-sm-6 col-md-4 " style="width: 18rem;">
+            <h5 class="card-title text-danger text-center">SUBJECTS</h5>
+            <img class="card-img-top rounded" src="../img/materia.jpg" height="150" alt="Card image cap">
+            <div class="card-body">
+               <% if (user && user.userType === 'Administrador') { %>
+               <h5 class="card-title text-danger">
+                  <a href="./subject">
+                     <font size="3"> <img class="" src="../img/mas.png" height="15"> Add subjects</font>
+                  </a>
+               </h5>
+               <% } %>
+               <h5 class="card-title text-danger">
+                  <a href="./subjects">
+                     <font size="3"> <img class="" src="../img/list.png" height="15"> List of subjects</font>
+                  </a><br></h5>
+   
+            </div>
          </div>
       </div>
 
-      <div class="card col-12 col-sm-6 col-md-4 bg-light" style="width: 18rem;">
-         <h5 class="card-title text-danger text-center">CAREER</h5>
-         <img class="card-img-top rounded" src="../img/carrera.jpg " height="150" alt="Card image cap">
-         <div class="card-body">
-            <h5 class="card-title text-danger"><a href="./career">
-                  <font size="3"> <img class="" src="../img/mas.png" height="15"> Add career</font>
-               </a></h5>
-            <h3 class="card-text"> <a href="./careers">
-                  <font size="3"> <img class="" src="../img/list.png" height="15"> List of careers</font>
-               </a></h3>
-         </div>
-      </div>
+   <% } else { %>
 
-      <div class="card col-12 col-sm-6 col-md-4 " style="width: 18rem;">
-         <h5 class="card-title text-danger text-center">SUBJECTS</h5>
-         <img class="card-img-top rounded" src="../img/materia.jpg" height="150" alt="Card image cap">
-         <div class="card-body">
-            <h5 class="card-title text-danger">
-               <a href="./subject">
-                  <font size="3"> <img class="" src="../img/mas.png" height="15"> Add subjects</font>
-               </a>
-            </h5>
-            <h5 class="card-title text-danger">
-               <a href="./subjects">
-                  <font size="3"> <img class="" src="../img/list.png" height="15"> List of subjects</font>
-               </a><br></h5>
+      <h1 class="text-center">
+         <font class="text-secondary" size="6" , color="#800080">Bienvenido al sistema de University Calgary</font>
+      </h1>
 
-         </div>
-      </div>
-   </div>
+   <% }%>
+   
 
 
 </body>

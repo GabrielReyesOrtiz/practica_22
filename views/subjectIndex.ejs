@@ -5,53 +5,89 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Materias</title>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>ADD CAREER </title>
+  
+  </head>
+  
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white col-12 d-flex ">
+      <ul class="navbar-nav mr-auto bg-danger">
+        <li class="nav-item dropdown">
+  
+          <img src="../img/logo.png" width="300" height="100" class="d-inline-block align-top" alt="" />
+  
+        </li>
+      </ul>
+      <!-- Aqui va-->
+  
+      <form class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-secondary" href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="../img/can.png" width="50" height="30" class="d-inline-block align-top" alt="">
+              CA
+            </a>
+          </li>
+        </ul>
+  
+        <form class="form-inline">
+          <a class="btn btn-outline-success my-2 my-sm-0 bg-white" href="./logout">Log out</a>
+        </form>
+      </form>
+    </nav>
+  </div>
 
 <body>
-    <h1>
-        <font size="20" , color="#800080"> Lista de Materias</font>
+    <h1 class="text-center">
+        <font size="6" , color="#800080">Lista de Materias</font>
     </h1>
-    <table border="1" cellpadding="1" cellspacing="1">
 
-        <head>
-            <tr bgcolor="##808000">
-                <th>
-                    <font size="5" , color="#ffffff">Id de Materia</font>
-                </th>
-                <th>
-                    <font size="5" , color="#ffffff">Nombre</font>
-                </th>
-                <th>
-                    <font size="5" , color="#ffffff">Descripción</font>
-                </th>
-                <th>
-                    <font size="5" , color="#ffffff">Id de Maestro</font>
-                </th>
+    <form class="form-inline my-2 my-lg-0" action="/searchSubject" method="GET">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar materia" aria-label="Buscar" name="search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+
+    <table class="table table-bordered table-striped">
+        <thead class="bg-olive text-white">
+            <tr>
+                <th class="text-dark">Id de Materia</th>
+                <th class="text-dark">Nombre</th>
+                <th class="text-dark">Descripción</th>
+                <th class="text-dark">Id de Maestro</th>
+                <% if (user && user.userType === 'Administrador') { %>
+                <th class="text-dark">Delete</th>
+                <th class="text-dark">Update</th>
+                <% } %>
             </tr>
-        </head>
-
-        <body>
+        </thead>
+        <tbody>
             <% for(let i=0; i < subjects.length; i++) { %>
-            <tr bgcolor="#C0C0C0">
+            <tr>
                 <td><%= subjects[i].idS %></td>
                 <td><%= subjects[i].name %></td>
                 <td><%= subjects[i].description %></td>
                 <td><%= subjects[i].id_teacher %></td>
+                <% if (user && user.userType === 'Administrador') { %>
                 <td><a href="<%= `deleteSubject/${subjects[i]._id}` %>">Delete</a> </td>
                 <td><a href="<%= `findById/${subjects[i]._id}` %>">Update</a> </td>
-
+                <% } %>
             </tr>
             <% } %>
-        </body>
+        </tbody>
     </table>
-    <div>
-        <br><br><br>
-        <a href="./main">
-            <font size="20" , color="#800080"> Back </font>
-        </a>
+    <div class="text-center">
+        <a href="/" class="btn btn-primary btn-lg">Back</a>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Sk3oL+EEx5XVJnwo8JKkL5qyO20FmWfZ1zmk6ax+OJxgFl5cD5e/mzo0t0Ej0M6a"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

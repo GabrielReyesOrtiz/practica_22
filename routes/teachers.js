@@ -28,6 +28,9 @@ router.get('/deleteTeacher/:id', function(req, res, next){
     res.redirect('/teachers');
   });
 });
+
+
+
 //Update aqui vamos a encontrar el docuemnto a actualizar de la coleccion 
 //usamos el id que tiene en mongodb atlas en cada documento
 router.get('/findByIdT/:id', function(req, res, next){
@@ -71,15 +74,17 @@ router.post('/updateTeacher', function(req, res, next){
   });
 
 //Agregamos ruta por GET para renderizar la vista 
-/*router.get('/main', function (req, res){
-  res.render('main');
-});*/
-//Agregamos ruta por GET para renderizar la vista 
 router.get('/teacher', function (req, res){
   if (req.session.user) {
     // El usuario ha iniciado sesión, puedes acceder a los datos de sesión
-    const user = req.session.user;
-    res.render('teacher');
+    if (req.session.user.userType === 'Profesor') {
+      // El usuario es un profesor, permitir el acceso a la ruta '/career'
+      res.render('teacher');
+    } else {
+      // El usuario no es un profesor, redirige a una página de error o muestra un mensaje adecuado
+      res.redirect('/');
+    }
+    
   } else {
     // El usuario no ha iniciado sesión, redirige a la página de inicio de sesión
     res.redirect('/');

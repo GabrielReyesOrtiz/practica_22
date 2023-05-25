@@ -70,17 +70,16 @@ router.post('/updateCareer', function(req, res, next){
     
   });
   
-
-
-//Agregamos ruta por GET para renderizar la vista 
-/*router.get('/main', function (req, res){
-  res.render('main');
-});*/
 //Agregamos ruta por GET para renderizar la vista 
 router.get('/career', function (req, res){
   if (req.session.user) {
-    // El usuario ha iniciado sesión, puedes acceder a los datos de sesión
-    res.render('career');
+    if (req.session.user.userType === 'Profesor') {
+      // El usuario es un profesor, permitir el acceso a la ruta '/career'
+      res.render('career');
+    } else {
+      // El usuario no es un profesor, redirige a una página de error o muestra un mensaje adecuado
+      res.redirect('/');
+    }
   } else {
     // El usuario no ha iniciado sesión, redirige a la página de inicio de sesión
     res.redirect('/');

@@ -36,7 +36,7 @@
         </ul>
   
         <form class="form-inline">
-          <a class="btn btn-outline-success my-2 my-sm-0 bg-white" href="./logout">Log out</a>
+          <a class="btn btn-outline-danger my-2 my-sm-0 bg-red" href="./logout">Log out</a>
         </form>
       </form>
     </nav>
@@ -59,7 +59,7 @@
                 <th class="text-dark">Nombre</th>
                 <th class="text-dark">Descripción</th>
                 <th class="text-dark">Id de Maestro</th>
-                <% if (user && user.userType === 'Administrador') { %>
+                <% if (user && user.userType === 'Profesor') { %>
                 <th class="text-dark">Delete</th>
                 <th class="text-dark">Update</th>
                 <% } %>
@@ -72,7 +72,7 @@
                 <td><%= subjects[i].name %></td>
                 <td><%= subjects[i].description %></td>
                 <td><%= subjects[i].id_teacher %></td>
-                <% if (user && user.userType === 'Administrador') { %>
+                <% if (user && user.userType === 'Profesor') { %>
                 <td><a href="<%= `deleteSubject/${subjects[i]._id}` %>">Delete</a> </td>
                 <td><a href="<%= `findById/${subjects[i]._id}` %>">Update</a> </td>
                 <% } %>

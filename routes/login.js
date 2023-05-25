@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 let User = require('../models/user');
-
 // Aquí importa los modelos o cualquier otra dependencia que necesites
 
 
@@ -13,13 +11,13 @@ router.get('/login', (req, res) => {
     res.redirect('/');
   } else {
     // El usuario no ha iniciado sesión, redirige a la página de inicio de sesión
-    res.render('loginUser'); // Ajusta el nombre de la vista del login si es diferente
+    res.render('loginUser', { error: null }); // Ajusta el nombre de la vista del login si es diferente
   }
  
 });
 
 router.get('/register', (req, res) => {
-    res.render('registerUser'); // Ajusta el nombre de la vista del login si es diferente
+    res.render('registerUser', { error: null }); // Ajusta el nombre de la vista del login si es diferente
   });
 
 router.get('/', function (req, res){
@@ -35,7 +33,7 @@ router.post('/ejectRegister',  (req, res) => {
 
     user.save(err =>{
         if(err) {
-            res.status(500).send('ERROR AL REGISTRAR AL USUARIO');
+          res.render('registerUser', { error: 'ERROR AL REGISTRAR AL USUARIO' });
         } else {
             res.redirect('/login');
         }
@@ -46,25 +44,26 @@ router.post('/ejectRegister',  (req, res) => {
   router.post('/ejectLogin', async (req, res) => {
     const { email, password } = req.body;
   
-    User.findOne({email}, (err, user) => {
+    User.findOne({ email }, (err, user) => {
       if (err) {
-        res.status(500).send('ERROR AL AUTENTICAR AL USUARIO');
+        res.render('loginUser', { error: 'ERROR AL AUTENTICAR AL USUARIO' });
       } else if (!user) {
-        res.status(500).send('EL USUARIO NO EXISTE');
+        res.render('loginUser', { error: 'EL USUARIO NO EXISTE' }); // Renderiza la vista 'login' con el mensaje de error
       } else {
         user.isCorrectPassword(password, (err, result) => {
           if (err) {
-            res.status(500).send('ERROR AL AUTENTICAR');
+            res.render('loginUser', { error: 'ERROR AL AUTENTICAR' });
           } else if (result) {
             req.session.user = user; // Almacena el usuario en la sesión
             res.redirect('/');
           } else {
-            res.status(500).send('USUARIO Y/O CONTRASEÑA INCORRECTA');
+            res.render('loginUser', { error: 'USUARIO Y/O CONTRASEÑA INCORRECTA' }); // Renderiza la vista 'login' con el mensaje de error
           }
         });
       }
     });
   });
+  
   
   router.get('/logout', (req, res) => {
     req.session.user = false; // Restablece la sesión del usuario a false

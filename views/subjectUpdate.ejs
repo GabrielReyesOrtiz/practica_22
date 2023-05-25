@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html>
 
-<body>
-  <h1>
-    <font size="20" , color="#800080"> ACTUALIZAR DATOS DE MATERIA </font>
-  </h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Actualizar Datos de Materia</title>
+  <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
 
-  <form action="/updateSubject" method="post">
-    <label for="idS">Id de Materia:</label>
-    <input type="text" id="idS" name="idS" value="<%= `${subject.idS}` %>"><br><br>
-    <label for="name">NOMBRE:</label>
-    <input type="text" id="name" name="name" value="<%= `${subject.name}` %>"><br><br>
-    <label for="description">Descripción:</label>
-    <input type="text" id="description" name="description" value="<%= `${subject.description}` %>"><br><br>
-    <label for="id_teacher">Id de Maestro:</label>
-    <input type="text" id="id_teacher" name="id_teacher" value="<%= `${subject.id_teacher}` %>"><br><br>
-    <label for="objId">ID:</label>
-    <input type="text" id="objId" name="objId" value="<%= `${subject._id}` %>"><br><br>
-    <input type="submit" value="Submit">
-  </form>
-  <div>
-    <br>
-    <br>
-    <br>
-    <a href="./main">
-      <font size="20" , color="#800080"> Back </font>
-    </a>
+
+
+<body>
+  <div class="container">
+    <h1 class="mt-5 text-center text-purple">ACTUALIZAR DATOS DE MATERIA</h1>
+
+    <form action="/updateSubject" method="post">
+      <div class="form-group">
+        <label for="idS">Id de Materia:</label>
+        <input type="text" class="form-control" id="idS" name="idS" value="<%= `${subject.idS}` %>">
+      </div>
+      <div class="form-group">
+        <label for="name">NOMBRE:</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= `${subject.name}` %>">
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <input type="text" class="form-control" id="description" name="description" value="<%= `${subject.description}` %>">
+      </div>
+      <div class="form-group">
+        <label for="id_teacher">Id de Maestro:</label>
+        <input type="text" class="form-control" id="id_teacher" name="id_teacher" value="<%= `${subject.id_teacher}` %>">
+      </div>
+      <div class="form-group">
+        <label for="objId">ID:</label>
+        <input type="text" class="form-control" id="objId" name="objId" value="<%= `${subject._id}` %>">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="mt-5">
+      <a href="/subjects" class="text-purple">Back</a>
+    </div>
   </div>
+
+  <!-- Agrega el enlace al archivo JavaScript de Bootstrap (opcional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

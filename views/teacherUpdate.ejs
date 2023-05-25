@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html>
 
-<body>
-  <h1>
-    <font size="20" , color="#800080"> ACTUALIZAR DATOS DE MAESTRO </font>
-  </h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Actualizar Datos de Maestro</title>
+  <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
 
-  <form action="/updateTeacher" method="post">
-    <label for="idT">Id de Maestro:</label>
-    <input type="text" id="idT" name="idT" value="<%= `${teacher.idT}` %>"><br><br>
-    <label for="name">NOMBRE:</label>
-    <input type="text" id="name" name="name" value="<%= `${teacher.name}` %>"><br><br>
-    <label for="description">Email:</label>
-    <input type="text" id="email" name="email" value="<%= `${teacher.email}` %>"><br><br>
-    <label for="id_career">Id de Carrera:</label>
-    <input type="text" id="id_career" name="id_career" value="<%= `${teacher.id_career}` %>"><br><br>
-    <label for="objId">ID:</label>
-    <input type="text" id="objId" name="objId" value="<%= `${teacher._id}` %>"><br><br>
-    <input type="submit" value="Submit">
-  </form>
-  <div>
-    <br>
-    <br>
-    <br>
-    <a href="./main">
-      <font size="20" , color="#800080"> Back </font>
-    </a>
+
+<body>
+  <div class="container">
+    <h1 class="mt-5 text-center text-purple">ACTUALIZAR DATOS DE MAESTRO</h1>
+
+    <form action="/updateTeacher" method="post">
+      <div class="form-group">
+        <label for="idT">Id de Maestro:</label>
+        <input type="text" class="form-control" id="idT" name="idT" value="<%= `${teacher.idT}` %>">
+      </div>
+      <div class="form-group">
+        <label for="name">NOMBRE:</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= `${teacher.name}` %>">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" id="email" name="email" value="<%= `${teacher.email}` %>">
+      </div>
+      <div class="form-group">
+        <label for="id_career">Id de Carrera:</label>
+        <input type="text" class="form-control" id="id_career" name="id_career" value="<%= `${teacher.id_career}` %>">
+      </div>
+      <div class="form-group">
+        <label for="objId">ID:</label>
+        <input type="text" class="form-control" id="objId" name="objId" value="<%= `${teacher._id}` %>">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="mt-5">
+      <a href="/teachers" class="text-purple">Back</a>
+    </div>
   </div>
+
+  <!-- Agrega el enlace al archivo JavaScript de Bootstrap (opcional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -36,7 +36,7 @@
       </ul>
 
       <form class="form-inline">
-        <a class="btn btn-outline-success my-2 my-sm-0 bg-white" href="./logout">Log out</a>
+        <a class="btn btn-outline-danger my-2 my-sm-0 bg-red" href="./logout">Log out</a>
       </form>
     </form>
   </nav>
@@ -59,7 +59,7 @@
         <th class="text-dark">Nombre</th>
         <th class="text-dark">Correo electrónico</th>
         <th class="text-dark">Id de Carrera</th>
-        <% if (user && user.userType === 'Administrador') { %>
+        <% if (user && user.userType === 'Profesor') { %>
         <th class="text-dark">Delete</th>
         <th class="text-dark">Update</th>
         <% } %>
@@ -72,7 +72,7 @@
         <td><%= teachers[i].name %></td>
         <td><%= teachers[i].email %></td>
         <td><%= teachers[i].id_career %></td>
-        <% if (user && user.userType === 'Administrador') { %>
+        <% if (user && user.userType === 'Profesor') { %>
         <td><a href="<%= `deleteTeacher/${teachers[i]._id}` %>">Delete</a> </td>
         <td><a href="<%= `findByIdT/${teachers[i]._id}` %>">Update</a> </td>
         <% } %>

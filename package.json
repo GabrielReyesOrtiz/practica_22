@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node development.js",
+    "start": "npm run build",
+    "build": "echo 'No build script specified'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

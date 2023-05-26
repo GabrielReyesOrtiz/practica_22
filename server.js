@@ -21,11 +21,11 @@ app.use(session({
 }));
 
 // Ahora configuramos view engine, agregamos router y el urlencoded
-app.set('views', __dirname + '/views');
+
 app.set('view engine', 'ejs');
 
 app.get("/",(req,res)=>{
-  res.render("main", { user: req.session.user });
+  res.render("views/main", { user: req.session.user });
 });
 
 app.use(express.urlencoded( {extended: false} ));

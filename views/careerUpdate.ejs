@@ -1,46 +1,30 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Actualizar Datos de Carrera</title>
-  <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-</head>
-
-
-
 <body>
-  <div class="container">
-    <h1 class="mt-5 text-center text-purple">ACTUALIZAR DATOS DE CARRERA</h1>
+  <h1>
+    <font size="20" , color="#800080"> ACTUALIZAR DATOS DE CARRERA </font>
+  </h1>
 
-    <form action="/updateCareer" method="post">
-      <div class="form-group">
-        <label for="idC">Id de Carrera:</label>
-        <input type="text" class="form-control" id="idC" name="idC" value="<%= `${career.idC}` %>">
-      </div>
-      <div class="form-group">
-        <label for="name">NOMBRE:</label>
-        <input type="text" class="form-control" id="name" name="name" value="<%= `${career.name}` %>">
-      </div>
-      <div class="form-group">
-        <label for="description">Descripción:</label>
-        <input type="text" class="form-control" id="description" name="description" value="<%= `${career.description}` %>">
-      </div>
-      <div class="form-group">
-        <label for="objId">ID:</label>
-        <input type="text" class="form-control" id="objId" name="objId" value="<%= `${career._id}` %>">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-    <div class="mt-5">
-      <a href="/careers" class="text-purple">Back</a>
-    </div>
+  <form action="/updateCareer" method="post">
+    <label for="idC">Id de Carrera:</label>
+    <input type="text" id="idC" name="idC" value="<%= `${career.idC}` %>"><br><br>
+    <label for="name">NOMBRE:</label>
+    <input type="text" id="name" name="name" value="<%= `${career.name}` %>"><br><br>
+    <label for="description">Descripción:</label>
+    <input type="text" id="description" name="description" value="<%= `${career.description}` %>"><br><br>
+    <label for="objId">ID:</label>
+    <input type="text" id="objId" name="objId" value="<%= `${career._id}` %>"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <div>
+    <br>
+    <br>
+    <br>
+    <a href="./main">
+      <font size="20" , color="#800080"> Back </font>
+    </a>
   </div>
-
-  <!-- Agrega el enlace al archivo JavaScript de Bootstrap (opcional) -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

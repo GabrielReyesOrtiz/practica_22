@@ -5,88 +5,53 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>ADD CAREER </title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Maestros</title>
 </head>
 
-<div class="container-fluid">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-white col-12 d-flex ">
-    <ul class="navbar-nav mr-auto bg-danger">
-      <li class="nav-item dropdown">
-
-        <img src="../img/logo.png" width="300" height="100" class="d-inline-block align-top" alt="" />
-
-      </li>
-    </ul>
-    <!-- Aqui va-->
-
-    <form class="form-inline my-2 my-lg-0">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-secondary" href="#" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="../img/can.png" width="50" height="30" class="d-inline-block align-top" alt="">
-            CA
-          </a>
-        </li>
-      </ul>
-
-      <form class="form-inline">
-        <a class="btn btn-outline-danger my-2 my-sm-0 bg-red" href="./logout">Log out</a>
-      </form>
-    </form>
-  </nav>
-</div>
-
 <body>
-  <h1 class="text-center">
-    <font size="6" , color="#C0C0C0">Lista de Maestros</font>
+  <h1>
+    <font size="20" , color="#C0C0C0"> Lista de Asistencia</font>
   </h1>
+  <table border="1" cellpadding="1" cellspacing="1">
 
-  <form class="form-inline my-2 my-lg-0" action="/searchTeacher" method="GET">
-    <input class="form-control mr-sm-2" type="search" placeholder="Buscar maestro" aria-label="Buscar" name="search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-  </form>
-
-  <table class="table table-bordered table-striped">
-    <thead class="bg-purple text-white">
-      <tr>
-        <th class="text-dark">Id de Maestros</th>
-        <th class="text-dark">Nombre</th>
-        <th class="text-dark">Correo electrónico</th>
-        <th class="text-dark">Id de Carrera</th>
-        <% if (user && user.userType === 'Profesor') { %>
-        <th class="text-dark">Delete</th>
-        <th class="text-dark">Update</th>
-        <% } %>
+    <head>
+      <tr bgcolor="#800080">
+        <th>
+          <font size="5" , color="#ffffff">No. Cuenta</font>
+        </th>
+        <th>
+          <font size="5" , color="#ffffff">Nombre</font>
+        </th>
+        <th>
+          <font size="5" , color="#ffffff">Grado y Grupo</font>
+        </th>
+        <th>
+          <font size="5" , color="#ffffff">Asistencia</font>
+        </th>
       </tr>
-    </thead>
-    <tbody>
+    </head>
+
+    <body>
       <% for(let i=0; i < teachers.length; i++) { %>
-      <tr>
-        <td ><%= teachers[i].idT %></td>
-        <td><%= teachers[i].name %></td>
+      <tr bgcolor="#C0C0C0">
+        <td><%= teachers[i].idT %></td>
+        <td><%= teachers[i].name %> <span><%= teachers[i].id_career %></span></td>
         <td><%= teachers[i].email %></td>
-        <td><%= teachers[i].id_career %></td>
-        <% if (user && user.userType === 'Profesor') { %>
+        <td><%= teachers[i].asistencia %></td>
         <td><a href="<%= `deleteTeacher/${teachers[i]._id}` %>">Delete</a> </td>
         <td><a href="<%= `findByIdT/${teachers[i]._id}` %>">Update</a> </td>
-        <% } %>
+
       </tr>
       <% } %>
-    </tbody>
+    </body>
   </table>
-  <div class="text-center">
-    <a href="/" class="btn btn-primary btn-lg">Back</a>
+  <div>
+    <br><br><br>
+    <a href="./main">
+      <font size="20" , color="#800080"> Back </font>
+    </a>
   </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-    integrity="sha384-Sk3oL+EEx5XVJnwo8JKkL5qyO20FmWfZ1zmk6ax+OJxgFl5cD5e/mzo0t0Ej0M6a" crossorigin="anonymous"></script>
 </body>
 
 </html>

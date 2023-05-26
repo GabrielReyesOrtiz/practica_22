@@ -5,7 +5,8 @@ let TeacherSchema = new mongoose.Schema({
   idT:Number,
   name: String,
   email: String,
-  id_career: Number
+  id_career: String,
+  asistencia: Number
 
 });
 //Exponemos instancia de modelos mongoose 
